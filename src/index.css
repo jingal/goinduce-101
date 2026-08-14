@@ -1,0 +1,594 @@
+/* ==========================================================================
+   고민쥬스 (Gomin Juice) 1.0 — Global Style & Design System
+   Aesthetic: Cute Girly Retro, Ribbon & Lace, Sweet Pastel Juice, Tactile Hand-drawn
+   ========================================================================== */
+
+:root {
+  /* Color Palette */
+  --color-bg-main: #FFF4F7;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-soft: #FFF9FA;
+  
+  --color-primary: #FF4D6D;
+  --color-primary-dark: #D90429;
+  --color-primary-light: #FF85A2;
+  --color-primary-soft: #FFE5EC;
+
+  --color-ribbon-red: #E63946;
+  --color-ribbon-shadow: #A8202E;
+  --color-ribbon-pink: #FF758F;
+  --color-lace: #FFEBF0;
+  
+  --color-accent-yellow: #FFD166;
+  --color-accent-mint: #80ED99;
+  --color-accent-lavender: #C77DFF;
+  --color-accent-peach: #FFB5A7;
+  --color-accent-sky: #64DFDF;
+
+  --color-text-main: #2D2327;
+  --color-text-sub: #6C5861;
+  --color-text-muted: #9E8994;
+  --color-text-highlight: #FF2E63;
+
+  --border-handdrawn: 2px solid #2D2327;
+  --border-soft: 1.5px solid #F3CFD8;
+
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+  --radius-xl: 36px;
+  --radius-hand: 255px 15px 225px 15px/15px 225px 15px 255px;
+
+  --shadow-sm: 0 4px 12px rgba(255, 77, 109, 0.08);
+  --shadow-card: 0 10px 30px rgba(255, 77, 109, 0.12), 0 2px 8px rgba(45, 35, 39, 0.04);
+  --shadow-retro: 3px 4px 0px #2D2327;
+  --shadow-retro-hover: 1px 2px 0px #2D2327;
+  --shadow-retro-lg: 5px 6px 0px #2D2327;
+
+  /* Fonts */
+  --font-title: 'Jua', 'Gaegu', cursive, -apple-system, sans-serif;
+  --font-hand: 'Single Day', 'Gaegu', cursive, sans-serif;
+  --font-body: 'SUIT', 'Noto Sans KR', -apple-system, sans-serif;
+  --font-quote: 'Nanum Myeongjo', serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--color-text-main);
+  background-color: var(--color-bg-main);
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(255, 209, 220, 0.5) 0%, transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(255, 229, 180, 0.4) 0%, transparent 25%),
+    radial-gradient(circle at 50% 85%, rgba(225, 240, 255, 0.5) 0%, transparent 35%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, textarea, select {
+  font-family: inherit;
+}
+
+/* ==========================================================================
+   Main App Container
+   ========================================================================== */
+.app-wrapper {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 16px 40px 16px;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 480px;
+  min-height: calc(100vh - 40px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-surface);
+  border: var(--border-handdrawn);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-retro-lg), var(--shadow-card);
+  margin-top: 18px;
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* ==========================================================================
+   Lace & Ribbon Decorative Elements
+   ========================================================================== */
+.lace-top-banner {
+  width: 100%;
+  height: 24px;
+  background-color: #FFF0F4;
+  background-image: radial-gradient(circle at 10px 0, transparent 9px, #FFDEE6 10px);
+  background-size: 20px 20px;
+  border-bottom: 2px dashed #FF85A2;
+}
+
+.lace-bottom-banner {
+  width: 100%;
+  height: 20px;
+  background-color: #FFF0F4;
+  background-image: radial-gradient(circle at 10px 20px, transparent 9px, #FFDEE6 10px);
+  background-size: 20px 20px;
+  border-top: 2px dashed #FF85A2;
+  margin-top: auto;
+}
+
+.ribbon-header-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 20px 12px 20px;
+  background: linear-gradient(180deg, #FFF0F5 0%, #FFFFFF 100%);
+  border-bottom: 2px dashed #FFCCD5;
+}
+
+.big-red-ribbon {
+  position: relative;
+  width: 110px;
+  height: 80px;
+  margin-bottom: -10px;
+  filter: drop-shadow(0 4px 8px rgba(168, 32, 46, 0.25));
+  animation: floatRibbon 4s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes floatRibbon {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(1deg);
+  }
+}
+
+.sound-toggle-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #FFF0F4;
+  border: 2px solid #2D2327;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 0px #2D2327;
+  transition: all 0.15s ease;
+  z-index: 20;
+}
+
+.sound-toggle-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #2D2327;
+}
+
+.sound-toggle-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #2D2327;
+}
+
+/* ==========================================================================
+   Cute Pixel/Retro Title Logo
+   ========================================================================== */
+.brand-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.brand-logo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  background: #FFF275;
+  border: 2px solid #2D2327;
+  border-radius: 20px;
+  font-family: var(--font-title);
+  font-size: 13px;
+  color: #2D2327;
+  box-shadow: 2px 2px 0px #2D2327;
+  transform: rotate(-2deg);
+}
+
+.brand-title {
+  font-family: var(--font-title);
+  font-size: 40px;
+  letter-spacing: -0.5px;
+  color: #2D2327;
+  text-shadow: 
+    2px 2px 0px #FFFFFF,
+    4px 4px 0px #FF85A2,
+    5px 5px 0px #2D2327;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+  user-select: none;
+}
+
+.brand-subtitle {
+  font-family: var(--font-hand);
+  font-size: 17px;
+  color: var(--color-text-sub);
+  text-align: center;
+}
+
+/* ==========================================================================
+   Buttons & Interactive UI
+   ========================================================================== */
+.btn-primary-retro {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(180deg, #FF6B8B 0%, #FF4D6D 100%);
+  color: #FFFFFF;
+  font-family: var(--font-title);
+  font-size: 20px;
+  border: 2.5px solid #2D2327;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-retro);
+  transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+}
+
+.btn-primary-retro:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 5px 0px #2D2327;
+  background: linear-gradient(180deg, #FF7F9D 0%, #FF5A7A 100%);
+}
+
+.btn-primary-retro:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #2D2327;
+}
+
+.btn-secondary-retro {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #FFFFFF;
+  color: var(--color-text-main);
+  font-family: var(--font-title);
+  font-size: 16px;
+  border: 2px solid #2D2327;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-retro);
+  transition: all 0.15s ease;
+}
+
+.btn-secondary-retro:hover {
+  background: #FFF0F4;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 4px 0px #2D2327;
+}
+
+.btn-secondary-retro:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #2D2327;
+}
+
+.btn-ghost-retro {
+  font-family: var(--font-hand);
+  font-size: 16px;
+  color: var(--color-text-sub);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  padding: 8px 12px;
+  transition: color 0.15s ease;
+}
+
+.btn-ghost-retro:hover {
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Hand-Drawn Form Inputs & Cards
+   ========================================================================== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-title);
+  font-size: 17px;
+  color: var(--color-text-main);
+}
+
+.form-label .required-badge {
+  font-size: 11px;
+  font-family: var(--font-body);
+  background: #FF4D6D;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.form-label .optional-badge {
+  font-size: 11px;
+  font-family: var(--font-body);
+  background: #E5E5E5;
+  color: #666;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.retro-input {
+  width: 100%;
+  padding: 13px 16px;
+  background: #FFFFFF;
+  border: 2px solid #2D2327;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  color: var(--color-text-main);
+  box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.retro-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(255, 77, 109, 0.2);
+}
+
+.retro-textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 14px 16px;
+  background: #FFFFFF;
+  border: 2px solid #2D2327;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  color: var(--color-text-main);
+  line-height: 1.6;
+  resize: vertical;
+  box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.retro-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(255, 77, 109, 0.2);
+}
+
+/* Category Grid & Cards */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  background: #FFFFFF;
+  border: 2px solid #2D2327;
+  border-radius: var(--radius-md);
+  box-shadow: 2px 3px 0px #2D2327;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+  text-align: left;
+}
+
+.category-card:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 4px 0px #2D2327;
+}
+
+.category-card.selected {
+  background: #FFF0F4;
+  border-color: #FF4D6D;
+  box-shadow: 3px 4px 0px #FF4D6D;
+  transform: translate(-2px, -2px);
+}
+
+.category-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.category-card-emoji {
+  font-size: 24px;
+}
+
+.category-card-label {
+  font-family: var(--font-title);
+  font-size: 16px;
+  color: #2D2327;
+}
+
+.category-card-sub {
+  font-size: 12px;
+  color: var(--color-text-sub);
+  line-height: 1.3;
+}
+
+/* ==========================================================================
+   Page Content Containers
+   ========================================================================== */
+.page-body {
+  flex: 1;
+  padding: 20px 20px 24px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Animated Floating Background Sparkles */
+.sparkle-particle {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  animation: floatSparkle 6s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes floatSparkle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-12px) rotate(15deg) scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   Modal Overlay
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(45, 35, 39, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 440px;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: #FFFFFF;
+  border: 2.5px solid #2D2327;
+  border-radius: var(--radius-lg);
+  box-shadow: 6px 8px 0px #2D2327;
+  padding: 24px;
+  position: relative;
+  animation: modalPop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalPop {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Loading Spinners */
+.juice-blender-animation {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.juice-cup {
+  width: 80px;
+  height: 95px;
+  background: #FFF0F4;
+  border: 3px solid #2D2327;
+  border-radius: 12px 12px 24px 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 3px 4px 0px #2D2327;
+}
+
+.juice-liquid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(180deg, #FF85A2 0%, #FF4D6D 100%);
+  animation: juiceWave 2s ease-in-out infinite alternate;
+}
+
+@keyframes juiceWave {
+  0% {
+    height: 45%;
+    transform: rotate(-3deg);
+  }
+  100% {
+    height: 75%;
+    transform: rotate(3deg);
+  }
+}
+
+.straw {
+  position: absolute;
+  top: -16px;
+  right: 22px;
+  width: 8px;
+  height: 70px;
+  background: #FFD166;
+  border: 2px solid #2D2327;
+  transform: rotate(15deg);
+  border-radius: 4px;
+  z-index: 5;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF0F4;
+}
+::-webkit-scrollbar-thumb {
+  background: #FF85A2;
+  border-radius: 10px;
+}
