@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
-import { Share2, Download, RefreshCw, Home, Sparkles, Quote as QuoteIcon, CheckCircle2, ChevronDown, ChevronUp, Heart } from 'lucide-react';
+import { Share2, Download, RefreshCw, Home, Sparkles, Quote as QuoteIcon, CheckCircle2, ChevronDown, ChevronUp, Heart, Lightbulb, CheckSquare } from 'lucide-react';
 import { WorryResult } from '../../types';
 import { CATEGORIES } from '../../data/categories';
 import { exportCardAsImage } from '../../utils/cardExporter';
@@ -13,7 +13,7 @@ interface ResultPageProps {
 }
 
 export const ResultPage: React.FC<ResultPageProps> = ({ result, onRefreshQuote, onGoHome }) => {
-  const { submission, person, quote } = result;
+  const { submission, person, quote, advice } = result;
   const [showWorry, setShowWorry] = useState(false);
   const [copiedToast, setCopiedToast] = useState('');
   const [isExporting, setIsExporting] = useState(false);
@@ -312,7 +312,38 @@ export const ResultPage: React.FC<ResultPageProps> = ({ result, onRefreshQuote, 
             </div>
           </div>
 
-          {/* 4. Warm Interpretation / 풀이풀이 (PRD Requirement) */}
+          {/* 4-1. Core Dilemma / 질문의 본질 짚어보기 */}
+          {advice && (
+            <div
+              style={{
+                background: '#FFF9E6',
+                border: '2px solid #2D2327',
+                borderRadius: '16px',
+                padding: '14px 16px',
+                boxShadow: '2px 2px 0px #2D2327',
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  fontFamily: 'var(--font-title)',
+                  fontSize: '14.5px',
+                  color: '#D97706',
+                  marginBottom: '6px',
+                }}
+              >
+                <Lightbulb size={16} />
+                <span>질문의 본질 짚어보기</span>
+              </div>
+              <p style={{ fontSize: '13px', fontWeight: 600, color: '#2D2327', lineHeight: 1.5 }}>
+                🔍 {advice.coreDilemma}
+              </p>
+            </div>
+          )}
+
+          {/* 4-2. Warm Interpretation & Insight / 다정한 통찰과 풀이 */}
           <div
             style={{
               background: '#EDF6FD',
@@ -330,16 +361,79 @@ export const ResultPage: React.FC<ResultPageProps> = ({ result, onRefreshQuote, 
                 fontFamily: 'var(--font-title)',
                 fontSize: '15px',
                 color: '#0284C7',
-                marginBottom: '6px',
+                marginBottom: '8px',
               }}
             >
               <Heart size={15} fill="#0284C7" color="#0284C7" />
-              <span>고인듀스 101의 다정한 풀이</span>
+              <span>{person.name}의 다정한 통찰</span>
             </div>
-            <p style={{ fontSize: '13.5px', color: '#2D2327', lineHeight: 1.65 }}>
-              {quote.interpretation}
-            </p>
+
+            {advice && advice.insight && (
+              <p style={{ fontSize: '13.5px', color: '#1E293B', lineHeight: 1.65, marginBottom: '10px' }}>
+                {advice.insight}
+              </p>
+            )}
+
+            <div
+              style={{
+                background: 'rgba(255, 255, 255, 0.75)',
+                border: '1px dashed #93C5FD',
+                borderRadius: '12px',
+                padding: '10px 12px',
+                fontSize: '13px',
+                color: '#334155',
+                lineHeight: 1.6,
+              }}
+            >
+              💬 <strong>명언 깊이 읽기:</strong> {quote.interpretation}
+            </div>
           </div>
+
+          {/* 4-3. Actionable Solutions / 질문의 취지에 맞춘 실천 솔루션 */}
+          {advice && advice.actionTips && advice.actionTips.length > 0 && (
+            <div
+              style={{
+                background: '#F0FDF4',
+                border: '2px solid #2D2327',
+                borderRadius: '16px',
+                padding: '16px',
+                boxShadow: '2px 2px 0px #2D2327',
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  fontFamily: 'var(--font-title)',
+                  fontSize: '15px',
+                  color: '#16A34A',
+                  marginBottom: '10px',
+                }}
+              >
+                <CheckSquare size={16} />
+                <span>질문의 취지에 맞춘 실천 솔루션</span>
+              </div>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {advice.actionTips.map((tip, idx) => (
+                  <li
+                    key={idx}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '8px',
+                      fontSize: '13px',
+                      color: '#1E293B',
+                      lineHeight: 1.55,
+                    }}
+                  >
+                    <span style={{ color: '#16A34A', fontWeight: 'bold', flexShrink: 0, marginTop: '1px' }}>✔</span>
+                    <span>{tip}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Tag Pills */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', justifyContent: 'center' }}>

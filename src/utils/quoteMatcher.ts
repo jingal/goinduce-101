@@ -1,6 +1,7 @@
 import { Category, Character, Quote, WorryResult, WorrySubmission } from '../types';
 import { CHARACTERS } from '../data/characters';
 import { QUOTES } from '../data/quotes';
+import { analyzeUserDilemma } from './dilemmaAnalyzer';
 
 interface MatchOptions {
   previousResult?: WorryResult | null;
@@ -105,6 +106,7 @@ export function matchWorryQuote(submission: WorrySubmission, options?: MatchOpti
         submission,
         person: chosenCharacter,
         quote: chosenQuote,
+        advice: analyzeUserDilemma(worryText, targetCategory, chosenCharacter.name),
       };
     }
   }
@@ -168,6 +170,7 @@ export function matchWorryQuote(submission: WorrySubmission, options?: MatchOpti
     submission,
     person: chosenCharacter,
     quote: chosenQuote,
+    advice: analyzeUserDilemma(worryText, targetCategory, chosenCharacter.name),
   };
 }
 
